@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import backgroundImg from "../../images/backgroundimg.png"; // Importing the background image
 import { Box, Button, Popover, Typography } from "@mui/material";
 import ContactForm from "../contact form";
 import { Language, Phone, Link } from "@mui/icons-material";
+import profileContactImg from "../../images/Profilecontact.png";
 
 export default function ContactCard() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -21,11 +23,11 @@ export default function ContactCard() {
     <Box
       sx={{
         width: "100vw",
-        height: "100vh",
-        display: "flex",
+        height: {md: '100vh', xs:'50vh'},
+        display: {md:"flex", xs:"grid"},
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: 'url("./backgroundimg.png")',
+        backgroundImage: `url(${backgroundImg})`, // Using the imported background image
         backgroundPosition: "center",
         backgroundSize: "cover",
         position: "relative",
@@ -91,7 +93,7 @@ export default function ContactCard() {
         }}
       >
         <img
-          src="/Profilecontact.png"
+          src={profileContactImg}
           alt="Profile"
           style={{
             width: "100%",

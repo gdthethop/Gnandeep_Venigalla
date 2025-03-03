@@ -1,12 +1,12 @@
 import './App.css';
 import Header from './components/header';
 import MediaCard from './components/projects';
-import { Home } from './components/home';
 import FloatingActionButtonExtendedSize from './components/fab';
 import DenseAppBar from './components/second header';
 import About from './components/about';
 import SkillsSection from './components/skills';
 import ContactCard from './components/contactcard/ContactCard';
+import { Home } from './components/home';
 
 function App() {
 

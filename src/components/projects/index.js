@@ -89,9 +89,9 @@ export default function MediaCard() {
   };
 
   return (
-    <Box sx={{ display:'flex', flexDirection:"column", textAlign: "center", height: "100vh", justifyContent: "center" }}>
+    <Box sx={{ display:'flex', flexDirection:"column", textAlign: "center",height:{md:'100vh',xs:'auto' }, justifyContent: "center" }}>
       {/* Section Title */}
-      <Typography variant="h4" gutterBottom sx={{ color: "#0d9276", fontWeight: 600, marginBottom: "40px" }}>
+      <Typography variant="h2" gutterBottom sx={{ color: "#0d9276", fontWeight: 600, marginBottom: "40px" }}>
         My <span style={{ color: "#c80e13" }}>Projects</span>
       </Typography>
 

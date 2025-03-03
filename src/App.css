@@ -3,12 +3,6 @@
   overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .sticky {
   background-color: #fff6e9;
   position: fixed;
@@ -24,12 +18,12 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0px 20px; /* Reduced padding for mobile view */
+  padding: 0px 60px; /* Reduced padding for mobile view */
   color: aliceblue;
 }
 
 @media (max-width: 600px) {
   main {
-    padding: 0px 10px; /* Further reduce padding for smaller screens */
+    padding: 0px 40px; /* Further reduce padding for smaller screens */
   }
 }
