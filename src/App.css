@@ -1,0 +1,35 @@
+.App {
+  background-color:  #fff6e9;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.sticky {
+  background-color: #fff6e9;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px; /* Reduced padding for mobile view */
+  color: aliceblue;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 0px 10px; /* Further reduce padding for smaller screens */
+  }
+}
