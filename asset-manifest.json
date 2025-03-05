@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Profile/static/css/main.14d4daef.css",
-    "main.js": "/Profile/static/js/main.9552af87.js",
-    "static/media/about.png": "/Profile/static/media/about.913beea46fee005b395b.png",
-    "static/media/Profilecontact.png": "/Profile/static/media/Profilecontact.abfac28e000a1c68903f.png",
-    "static/media/profile.png": "/Profile/static/media/profile.641e4ec9ba01f1c51d5d.png",
-    "static/media/background2.png": "/Profile/static/media/background2.603ee327c30ef2ba65af.png",
-    "static/media/backgroundimg.png": "/Profile/static/media/backgroundimg.09fe7e4e5b3a4d893634.png",
-    "static/media/backgroundhome.png": "/Profile/static/media/backgroundhome.2282d94c7ba4b2c78566.png",
-    "index.html": "/Profile/index.html",
-    "main.14d4daef.css.map": "/Profile/static/css/main.14d4daef.css.map",
-    "main.9552af87.js.map": "/Profile/static/js/main.9552af87.js.map"
+    "main.css": "/Gnandeep_Venigalla/static/css/main.14d4daef.css",
+    "main.js": "/Gnandeep_Venigalla/static/js/main.b823c3a2.js",
+    "static/media/about.png": "/Gnandeep_Venigalla/static/media/about.913beea46fee005b395b.png",
+    "static/media/Profilecontact.png": "/Gnandeep_Venigalla/static/media/Profilecontact.abfac28e000a1c68903f.png",
+    "static/media/profile.png": "/Gnandeep_Venigalla/static/media/profile.641e4ec9ba01f1c51d5d.png",
+    "static/media/background2.png": "/Gnandeep_Venigalla/static/media/background2.603ee327c30ef2ba65af.png",
+    "static/media/backgroundimg.png": "/Gnandeep_Venigalla/static/media/backgroundimg.09fe7e4e5b3a4d893634.png",
+    "static/media/backgroundhome.png": "/Gnandeep_Venigalla/static/media/backgroundhome.2282d94c7ba4b2c78566.png",
+    "index.html": "/Gnandeep_Venigalla/index.html",
+    "main.14d4daef.css.map": "/Gnandeep_Venigalla/static/css/main.14d4daef.css.map",
+    "main.b823c3a2.js.map": "/Gnandeep_Venigalla/static/js/main.b823c3a2.js.map"
   },
   "entrypoints": [
     "static/css/main.14d4daef.css",
-    "static/js/main.9552af87.js"
+    "static/js/main.b823c3a2.js"
   ]
 }
