@@ -6,208 +6,192 @@ import {
   CardMedia,
   Button,
   Typography,
-  Divider,
-  Paper,
-  Stack,
+  Grid,
   Box,
+  Chip,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { OpenInNew, Code } from "@mui/icons-material";
 
-// Define the `Item` component using the `styled` function
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  backgroundColor: "transparent",
-  boxShadow: "none",
-}));
+import paywiseImg from "../../images/paywise.png";
+import gdplayerImg from "../../images/gdplayer.png";
+import gdenterprisesImg from "../../images/gdenterprises.png";
+import creativestudioImg from "../../images/creativestudio.png";
 
-const projectDetails = {
-  1: {
-    title: "Modern Video Streaming Platform",
-    technologies: "React.js, Node.js, MySQL, Oracle Cloud",
-    description:
-      "Developed a video-sharing platform that enables content streaming without requiring login. Designed an interactive UI using React.js with features like video thumbnails, hover effects, and dark mode. Implemented secure backend with Node.js and MySQL for handling video uploads and metadata. Integrated cloud storage (Oracle Cloud) for scalability and high-performance content delivery.",
-  },
-  2: {
-    title: "Responsive Portfolio Website",
-    technologies: "HTML, CSS, JavaScript, Bootstrap, GitHub Pages",
-    description:
-      "Designed and developed a personal portfolio website showcasing projects and skills. Implemented smooth animations, transitions, and interactive elements to enhance user experience. Optimized performance for mobile-first and cross-browser compatibility.",
-  },
-  3: {
-    title: "E-Commerce Frontend Interface",
-    technologies: "React.js, Redux, Firebase, Tailwind CSS",
-    description:
-      "Built a dynamic and scalable e-commerce frontend with product listings and user authentication. Implemented state management using Redux for seamless cart and checkout functionality. Integrated real-time database (Firebase) for efficient product and user data handling.",
-  },
-};
-
-// Add hover effect styles to enhance card appearance
-const HoverCard = styled(Card)(({ theme }) => ({
-  maxWidth: 345,
-  backgroundColor: "white",
-  color: "#0d9276",
-  zIndex: 9,
-  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-  "&:hover": {
-    transform: "scale(1.05)",
-    boxShadow: "0px 15px 25px rgba(0, 0, 0, 0.1)",
-  },
-}));
-
-// Styled box for project details
-const DetailsBox = styled(Box)(({ theme }) => ({
-  position: "relative",
-  top: "0",
-  left: "0",
-  transform: "translateY(10px)", // Adjusted to position below the card
-  backgroundColor: "#fff",
-  padding: "20px",
-  borderRadius: "10px",
-  boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)",
-  width: "300px",
-  zIndex: 1,
+const StyledCard = styled(Card)(({ theme }) => ({
+  background: "var(--bg-secondary)",
+  border: "1px solid var(--glass-border)",
+  color: "var(--text-primary)",
+  transition: "var(--transition)",
+  height: "100%",
   display: "flex",
   flexDirection: "column",
-  gap: "10px",
-  [theme.breakpoints.down("sm")]: {
-    width: "250px",
+  borderRadius: "0px", /* Industrial sharp corners */
+  overflow: "hidden",
+  position: "relative",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "2px",
+    background: "var(--accent-emerald)",
+    transform: "scaleX(0)",
+    transformOrigin: "left",
+    transition: "var(--transition)",
+  },
+  "&:hover": {
+    transform: "translateY(-5px)",
+    borderColor: "rgba(16, 185, 129, 0.3)",
+    "&::after": { transform: "scaleX(1)" }
   },
 }));
 
-export default function MediaCard() {
-  const [clicked, setClicked] = React.useState(null);
+const projectData = [
+  {
+    id: "paywise",
+    title: "Paywise App",
+    image: paywiseImg,
+    subtitle: "Founder & CEO | FinTech Solution",
+    description: "Architecting a high-performance bill-splitting engine for modern financial collaboration. Zero-latency state management and enterprise encryption.",
+    tech: ["React", "High-Load API", "Secure-Vault"],
+    link: "https://paywiseapp.com",
+    accent: "var(--accent-emerald)",
+    status: "MISSION: ACTIVE"
+  },
+  {
+    id: "gd-creative",
+    title: "Creative Arm",
+    image: creativestudioImg,
+    subtitle: "Creative Lead | GD Lab",
+    description: "Bridging the gap between cinematic storytelling and technical interactive design through high-fidelity visuals and multi-media engineering.",
+    tech: ["Cinema Design", "Visual Engineering"],
+    link: "#",
+    accent: "var(--accent-gold)",
+    status: "CONTEXT: CREATIVE"
+  },
+  {
+    id: "gdplayer",
+    title: "GD Player",
+    image: gdplayerImg,
+    subtitle: "Lead Architect | Media Ecosystem",
+    description: "Engineering immersive media consumption. High-performance playback architectures optimized for distributed content delivery.",
+    tech: ["Playback Engine", "Distributed UI"],
+    link: "https://gdthethop.github.io/Gdplayer/#/home",
+    accent: "var(--accent-crimson)",
+    status: "PHASE: PRODUCTION"
+  },
+  {
+    id: "gd-enterprises",
+    title: "GD Enterprises",
+    image: gdenterprisesImg,
+    subtitle: "Consolidated Parent Entity",
+    description: "The strategic foundation for all modern ventures. Consolidating engineering excellence, creative vision, and scalable business logic.",
+    tech: ["Architecture", "Strategy", "Execution"],
+    link: "#",
+    accent: "var(--accent-emerald)",
+    status: "CORE: OPERATION"
+  }
+];
 
-  const handleClick = (projectId) => {
-    // Toggle the visibility of the project details when clicking
-    if (clicked === projectId) {
-      setClicked(null); // If clicked project is already open, close it
-    } else {
-      setClicked(projectId); // Open clicked project details
-    }
-  };
-
+export default function Ecosystem() {
   return (
-    <Box sx={{ display:'flex', flexDirection:"column", textAlign: "center",height:{md:'100vh',xs:'auto' }, justifyContent: "center" }}>
-      {/* Section Title */}
-      <Typography variant="h2" gutterBottom sx={{ color: "#0d9276", fontWeight: 600, marginBottom: "40px" }}>
-        My <span style={{ color: "#c80e13" }}>Projects</span>
-      </Typography>
+    <Box id="ecosystem" sx={{ py: { xs: 12, md: 20 }, px: { xs: 3, md: "12%" }, background: "linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)" }}>
+      <Box sx={{ mb: { xs: 8, md: 12 }, textAlign: { xs: "center", md: "left" }, maxWidth: "800px" }}>
+        <Typography variant="overline" sx={{ color: "var(--accent-emerald)", fontWeight: 800, letterSpacing: 5 }}>
+          VENTURE PROTOCOLS
+        </Typography>
+        <Typography variant="h2" sx={{ fontWeight: 900, mt: 2, fontSize: { xs: "2.5rem", md: "4rem" }, textTransform: "uppercase", lineHeight: 1 }}>
+          Selected <span style={{ color: "var(--accent-emerald)" }}>Ventures</span>
+        </Typography>
+        <Typography variant="body1" sx={{ color: "var(--text-secondary)", mt: 3, fontSize: { xs: "1rem", md: "1.1rem" }, maxWidth: "600px" }}>
+          A documentation of scalable digital assets and creative engineering projects architected under the vision of GD Enterprises.
+        </Typography>
+      </Box>
 
-      {/* Project Cards */}
-      <Stack
-        direction={{ xs: "column", md: "row" }}
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={3}
-        justifyContent="center"
-        alignItems="center"
-      >
-        {/* Video Streaming Platform */}
-        <Item>
-          <HoverCard sx={{ color: "#0d9276" }}>
-            <CardMedia
-              sx={{ height: 240 }}
-              image="./Screenshot 2025-02-24 at 12.51.18 PM 2.png" // Placeholder for image
-              title="Modern Video Streaming Platform"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5">
-                Video Streaming Platform
-              </Typography>
-              <Typography variant="body2">
-                A modern video-sharing platform with hover effects, dark mode, and Oracle Cloud storage.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" sx={{ color: "#c80e13" }} onClick={() => handleClick(1)}>
-                Learn More
-              </Button>
-            </CardActions>
-          </HoverCard>
-          {clicked === 1 && (
-            <DetailsBox>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: "#0d9276"}}>
-                {projectDetails[1].title}
-              </Typography>
-              <Typography variant="body2" sx={{ fontWeight: 500, color: "#c80e13" }}>
-                {projectDetails[1].technologies}
-              </Typography>
-              <Typography variant="body2">{projectDetails[1].description}</Typography>
-            </DetailsBox>
-          )}
-        </Item>
-
-        {/* Portfolio Website */}
-        <Item>
-          <HoverCard sx={{ color: "#0d9276" }}>
-            <CardMedia
-              sx={{ height: 240 }}
-              image="./Screenshot 2025-03-02 at 8.50.41 PM (2).png" // Placeholder for image
-              title="Portfolio Website"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5">
-                Portfolio Website
-              </Typography>
-              <Typography variant="body2">
-                A responsive portfolio site showcasing my projects, built with HTML, CSS, and JavaScript.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" sx={{ color: "#c80e13" }} onClick={() => handleClick(2)}>
-                Learn More
-              </Button>
-            </CardActions>
-          </HoverCard>
-          {clicked === 2 && (
-            <DetailsBox>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: "#0d9276" }}>
-                {projectDetails[2].title}
-              </Typography>
-              <Typography variant="body2" sx={{ fontWeight: 500, color: "#c80e13" }}>
-                {projectDetails[2].technologies}
-              </Typography>
-              <Typography variant="body2">{projectDetails[2].description}</Typography>
-            </DetailsBox>
-          )}
-        </Item>
-
-        {/* E-Commerce Frontend */}
-        <Item>
-          <HoverCard sx={{ color: "#0d9276" }}>
-            <CardMedia
-              sx={{ height: 240 }}
-              image="https://via.placeholder.com/345x240?text=E-Commerce+Frontend" // Placeholder for image
-              title="E-Commerce Interface"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5">
-                E-Commerce Frontend
-              </Typography>
-              <Typography variant="body2">
-                A scalable e-commerce frontend with React.js, Redux, and Firebase for real-time data.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" sx={{ color: "#c80e13" }} onClick={() => handleClick(3)}>
-                Learn More
-              </Button>
-            </CardActions>
-          </HoverCard>
-          {clicked === 3 && (
-            <DetailsBox>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: "#0d9276", }}>
-                {projectDetails[3].title}
-              </Typography>
-              <Typography variant="body2" sx={{ fontWeight: 500, color: "#c80e13" }}>
-                {projectDetails[3].technologies}
-              </Typography>
-              <Typography variant="body2">{projectDetails[3].description}</Typography>
-            </DetailsBox>
-          )}
-        </Item>
-      </Stack>
+      <Grid container spacing={{ xs: 4, md: 6 }}>
+        {projectData.map((project) => (
+          <Grid item xs={12} md={6} key={project.id}>
+            <StyledCard>
+              <Box sx={{ position: "relative", overflow: "hidden" }}>
+                <CardMedia
+                  component="img"
+                  height={{ xs: "280", md: "340" }}
+                  image={project.image}
+                  alt={project.title}
+                  sx={{ 
+                    filter: "grayscale(30%) contrast(1.1)",
+                    transition: "var(--transition)",
+                    "&:hover": { filter: "grayscale(0%) contrast(1.2)", scale: "1.05" }
+                  }}
+                />
+                <Box sx={{ 
+                  position: "absolute", 
+                  top: 20, 
+                  right: 20, 
+                  background: "rgba(0,0,0,0.8)", 
+                  color: project.accent,
+                  px: 2, 
+                  py: 0.5, 
+                  fontSize: "0.65rem", 
+                  fontWeight: 900, 
+                  border: `1px solid ${project.accent}`,
+                  letterSpacing: 1
+                }}>
+                  {project.status}
+                </Box>
+              </Box>
+              <CardContent sx={{ flexGrow: 1, p: { xs: 3, md: 5 } }}>
+                <Typography variant="h4" sx={{ fontWeight: 800, mb: 1, color: "var(--text-primary)", fontSize: { xs: "1.5rem", md: "2.1rem" } }}>
+                  {project.title}
+                </Typography>
+                <Typography variant="subtitle2" sx={{ color: "var(--text-muted)", mb: 3, fontWeight: 700, textTransform: "uppercase", fontSize: "0.7rem" }}>
+                  {project.subtitle}
+                </Typography>
+                <Typography variant="body2" sx={{ color: "var(--text-secondary)", mb: 4, height: { xs: "auto", md: "3.5em" }, overflow: "hidden", fontSize: { xs: "0.85rem", md: "0.95rem" } }}>
+                  {project.description}
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1.5 }}>
+                  {project.tech.map((t) => (
+                    <Typography key={t} sx={{ 
+                      fontSize: "0.6rem", 
+                      fontWeight: 800, 
+                      color: "var(--text-muted)",
+                      border: "1px solid var(--glass-border)",
+                      px: 1.5,
+                      py: 0.5,
+                      background: "rgba(255,255,255,0.02)"
+                    }}>
+                      // {t}
+                    </Typography>
+                  ))}
+                </Box>
+              </CardContent>
+              <CardActions sx={{ px: { xs: 3, md: 5 }, pb: { xs: 3, md: 5 } }}>
+                <Button 
+                  fullWidth 
+                  variant="outlined" 
+                  endIcon={<OpenInNew />}
+                  href={project.link}
+                  sx={{ 
+                    border: "1px solid var(--glass-border)", 
+                    color: "var(--text-primary)",
+                    borderRadius: "0px",
+                    fontWeight: 800,
+                    letterSpacing: 2,
+                    fontSize: "0.75rem",
+                    py: 1.5,
+                    "&:hover": { borderColor: "var(--text-primary)", background: "var(--text-primary)", color: "#000" }
+                  }}
+                >
+                  ACCESS TRANSMISSION
+                </Button>
+              </CardActions>
+            </StyledCard>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 }

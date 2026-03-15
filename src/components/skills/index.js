@@ -1,136 +1,104 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, LinearProgress, CircularProgress } from "@mui/material";
-import { FaHtml5, FaCss3Alt, FaBootstrap, FaReact, FaNodeJs, FaJs } from "react-icons/fa";
+import { Box, Typography, LinearProgress, CircularProgress, Grid } from "@mui/material";
+import { FaAngular, FaReact, FaNodeJs, FaJs, FaMagento } from "react-icons/fa";
+import { SiRedux, SiReactivex, SiTypescript } from "react-icons/si";
 
 const skillsData = [
-  { name: "HTML", icon: <FaHtml5 color="orange" size={30} />, percentage: 98 },
-  { name: "CSS", icon: <FaCss3Alt color="blue" size={30} />, percentage: 95 },
-  { name: "Bootstrap", icon: <FaBootstrap color="purple" size={30} />, percentage: 85 },
-  { name: "React", icon: <FaReact color="cyan" size={30} />, percentage: 87 },
-  { name: "Node.js", icon: <FaNodeJs color="green" size={30} />, percentage: 80 },
-  { name: "JavaScript", icon: <FaJs color="yellow" size={30} />, percentage: 88 },
-  { name: "Express.js", icon: <FaJs color="purple" size={30} />, percentage: 80 },
+  { name: "Angular & NGRX", icon: <FaAngular color="#dd0031" />, percentage: 95, color: "#dd0031" },
+  { name: "Redux & State Mgmt", icon: <SiRedux color="#764abc" />, percentage: 98, color: "#764abc" },
+  { name: "Adobe Commerce", icon: <FaMagento color="#ff6b00" />, percentage: 90, color: "#ff6b00" },
+  { name: "RxJS & Reactive", icon: <SiReactivex color="#e10098" />, percentage: 88, color: "#e10098" },
+  { name: "React & Context", icon: <FaReact color="#61dafb" />, percentage: 85, color: "#61dafb" },
+  { name: "TypeScript", icon: <SiTypescript color="#3178c6" />, percentage: 92, color: "#3178c6" },
+  { name: "Node.js & Backend", icon: <FaNodeJs color="#339933" />, percentage: 80, color: "#339933" },
+  { name: "UI/UX Design", icon: <FaJs color="#f7df1e" />, percentage: 85, color: "#f7df1e" },
 ];
 
-const softSkills = [
-  { name: "Teamwork", percentage: 85 },
-  { name: "Problem Solving", percentage: 80 },
-  { name: "Creativity", percentage: 75 },
-  { name: "Leadership", percentage: 70 },
+const leadershipSkills = [
+  { name: "Strategic Vision", percentage: 95 },
+  { name: "Team Leadership", percentage: 90 },
+  { name: "Product Architecture", percentage: 92 },
+  { name: "System Scalability", percentage: 88 },
 ];
 
 const SkillsSection = () => {
-  const [progress, setProgress] = useState({});
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const updatedProgress = {};
-      skillsData.forEach((skill) => (updatedProgress[skill.name] = skill.percentage));
-      softSkills.forEach((skill) => (updatedProgress[skill.name] = skill.percentage));
-      setProgress(updatedProgress);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <Box
+      id="skills"
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "20px",
-        minHeight: "100vh",
-        width: "90%",
-        mx: "auto",
-        justifyContent: "center",
+        py: 20,
+        px: { xs: 2, md: "12%" },
+        background: "var(--bg-primary)",
+        position: "relative",
       }}
     >
-      <Typography variant="h3" sx={{ color: "#0d9276", fontWeight: 600, textAlign: "center" }}>
-        My <span style={{ color: "#c80e13" }}>Skills</span>
-      </Typography>
+      {/* Structural Decoration */}
+      <Box sx={{ position: "absolute", top: 0, right: "10%", width: "1px", height: "100%", background: "var(--glass-border)", zIndex: 0 }} />
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          justifyContent: "center",
-          gap: { xs: 2, md: 4 },
-          width: "100%",
-        }}
-      >
-        {/* Technical Skills */}
-        <Box sx={{ width: { xs: "100%", md: "48%" }, p: 2, color: "#0d9276" }}>
-          <Typography variant="h4" fontWeight={500} gutterBottom textAlign="center">
-            Technical Skills
-          </Typography>
-          {skillsData.map((skill, index) => (
-            <Box key={index} display="flex" alignItems="center" gap={2} my={2}>
-              {skill.icon}
-              <Box width="100%">
-                <Box display="flex" justifyContent="space-between">
-                  <Typography variant="body1">{skill.name}</Typography>
-                  <Typography variant="body2">{progress[skill.name] || 0}%</Typography>
-                </Box>
-                <LinearProgress
-                  variant="determinate"
-                  value={progress[skill.name] || 0}
-                  sx={{
-                    height: 8,
-                    borderRadius: 5,
-                    bgcolor: "gray",
-                    "& .MuiLinearProgress-bar": { bgcolor: "#c80e13" },
-                  }}
-                />
-              </Box>
-            </Box>
-          ))}
-        </Box>
+      <Box sx={{ mb: 12, position: "relative", zIndex: 1 }}>
+        <Typography variant="overline" sx={{ color: "var(--accent-emerald)", fontWeight: 800, letterSpacing: 6 }}>
+          CAPABILITIES MANIFEST
+        </Typography>
+        <Typography variant="h2" sx={{ fontWeight: 900, mt: 2, fontSize: { xs: "2.5rem", md: "4.5rem" }, textTransform: "uppercase" }}>
+          Technical <span style={{ color: "var(--accent-emerald)" }}>Mastery</span>
+        </Typography>
+      </Box>
 
-        {/* Soft Skills */}
-        <Box sx={{ width: { xs: "100%", md: "48%" }, color: "#0d9276" }}>
-          <Typography variant="h4" fontWeight={500} gutterBottom textAlign="center">
-            Soft Skills
-          </Typography>
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-              gap: 4,
-              justifyContent: "center",
-            }}
-          >
-            {softSkills.map((skill, index) => (
-              <Box key={index} display="flex" flexDirection="column" alignItems="center">
-                <Typography variant="body1" mb={1} fontWeight={500} fontSize="20px">
-                  {skill.name}
-                </Typography>
-                <Box position="relative" display="inline-flex">
-                  <CircularProgress
-                    variant="determinate"
-                    value={progress[skill.name] || 0}
-                    size={90}
-                    thickness={4}
-                    sx={{ color: "#c80e13" }}
-                  />
-                  <Box
-                    position="absolute"
-                    top="50%"
-                    left="50%"
-                    sx={{
-                      transform: "translate(-50%, -50%)",
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                      color: "#41356C",
-                    }}
-                  >
-                    {progress[skill.name] || 0}%
+      <Grid container spacing={8}>
+        {/* Core Architecture */}
+        <Grid item xs={12} lg={8}>
+          <Box sx={{ borderTop: "1px solid var(--text-primary)", pt: 4, mb: 8 }}>
+            <Typography variant="h5" sx={{ fontWeight: 900, mb: 4, letterSpacing: 2, textTransform: "uppercase" }}>
+              01. System Architecture & UI
+            </Typography>
+            <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" }, gap: 4 }}>
+              {skillsData.map((skill, index) => (
+                <Box key={index} sx={{ borderBottom: "1px solid var(--glass-border)", pb: 2 }}>
+                  <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", mb: 1 }}>
+                    <Typography sx={{ fontWeight: 800, fontSize: "0.9rem", color: "var(--text-primary)" }}>
+                      {skill.name.toUpperCase()}
+                    </Typography>
+                    <Typography sx={{ fontSize: "0.75rem", fontWeight: 900, color: "var(--accent-emerald)" }}>
+                      {skill.percentage}% / LEVEL: MASTER
+                    </Typography>
+                  </Box>
+                  <Box sx={{ height: 2, width: "100%", background: "rgba(255,255,255,0.05)" }}>
+                    <Box sx={{ height: "100%", width: `${skill.percentage}%`, background: "var(--accent-emerald)" }} />
                   </Box>
                 </Box>
-              </Box>
-            ))}
+              ))}
+            </Box>
           </Box>
-        </Box>
-      </Box>
+        </Grid>
+
+        {/* Leadership & Creative */}
+        <Grid item xs={12} lg={4}>
+          <Box sx={{ borderTop: "1px solid var(--accent-emerald)", pt: 4, height: "100%", background: "var(--accent-emerald-glow)", p: 4 }}>
+            <Typography variant="h5" sx={{ fontWeight: 900, mb: 4, letterSpacing: 2, textTransform: "uppercase" }}>
+              02. Leadership Matrix
+            </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              {leadershipSkills.map((skill, index) => (
+                <Box key={index}>
+                  <Typography sx={{ fontWeight: 800, fontSize: "0.85rem", color: "var(--text-primary)", mb: 1 }}>
+                    {skill.name.toUpperCase()}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "var(--text-secondary)", fontSize: "0.8rem", lineHeight: 1.4 }}>
+                    Operational excellence in {skill.name.toLowerCase()} for enterprise scale and growth.
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+            
+            <Box sx={{ mt: 10, p: 3, border: "1px dashed var(--accent-emerald)", opacity: 0.8 }}>
+              <Typography sx={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--accent-emerald)", textAlign: "center", textTransform: "uppercase" }}>
+                Multidisciplinary Creative Eye: <br />
+                Video // Photo // Poster Design
+              </Typography>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

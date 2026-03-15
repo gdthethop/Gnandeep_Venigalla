@@ -8,19 +8,10 @@ import { FaReact } from 'react-icons/fa';
 
 export default function DenseAppBar({ isHidden }) {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ display: isHidden ? 'none' : 'flex', 
-        backgroundColor: "#fff6e9", 
-        color:'#41356C',
-        justifyContent:'center',
-        alignItems:'center',}}>
-        <Toolbar variant="dense">
-          <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1, textAlign:'center', fontWeight:600, fontSize: { xs: '11px', sm: '14px' } }}>
-            This website is made with React<FaReact color="#41356C" size={9} sx={{fontWeight:900}}/>. &copy; 2024-2029 by Gnandeep Venigalla.
-          </Typography>
-          {/* <JavascriptIcon style={{color:'#41356C', marginTop:'10px',marginLeft:'1px', fontSize:'26px'}}/> */}
-        </Toolbar>
-      </AppBar>
+    <Box component="footer" sx={{ py: 4, background: "var(--bg-primary)", borderTop: "1px solid var(--glass-border)" }}>
+      <Typography variant="body2" sx={{ textAlign: "center", color: "var(--text-muted)", fontWeight: 800, letterSpacing: 2 }}>
+        © 2026 GNANDEEP VENIGALLA // GD ENTERPRISES ARCHIVE
+      </Typography>
     </Box>
   );
 }

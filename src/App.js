@@ -7,6 +7,7 @@ import About from './components/about';
 import SkillsSection from './components/skills';
 import ContactCard from './components/contactcard/ContactCard';
 import { Home } from './components/home';
+import GithubShowcase from './components/github';
 
 function App() {
 
@@ -14,9 +15,10 @@ function App() {
         <div className="App">
             <Header/>
             <main id='home'><Home /></main>
+            <main id='ecosystem'><MediaCard /></main>
+            <main id='github'><GithubShowcase /></main>
             <main id='about'><About /></main>
             <main id='skills'><SkillsSection /></main>
-            <main id='projects'><MediaCard /></main>
             <main id='contact'><ContactCard /></main>
             <FloatingActionButtonExtendedSize />
             <DenseAppBar />

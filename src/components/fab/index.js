@@ -33,14 +33,20 @@ export default function FloatingActionButtonExtendedSize() {
   return (
     <>
       {showButton && (
-        <Box sx={{ '& > :not(style)': { m: 1 }, position: 'fixed', bottom: 16, right: 16 }}>
+        <Box sx={{ position: 'fixed', bottom: 32, right: 32, zIndex: 1000 }}>
           <Fab 
             variant="extended" 
-            style={{ color: "#fceed1e0", backgroundColor: '#7d3cff' }}
+            sx={{ 
+              color: "#000", 
+              backgroundColor: 'var(--accent-emerald)',
+              fontWeight: 700,
+              boxShadow: "0 10px 30px rgba(16, 185, 129, 0.4)",
+              "&:hover": { backgroundColor: "#059669" }
+            }}
             onClick={() => scrollToSection("home")}
           >
-            <NavigationIcon />
-            <Typography sx={{fontSize: { xs: '0px', sm: '12px' }, display: 'block'}}>Scroll to Home</Typography>
+            <NavigationIcon sx={{ mr: 1 }} />
+            <Typography sx={{ fontSize: "0.8rem", fontWeight: 700 }}>TOP</Typography>
           </Fab>
         </Box>
       )}
