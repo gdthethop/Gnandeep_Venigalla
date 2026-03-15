@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Typed from "typed.js";
-import { Box, Typography, Button, Avatar, IconButton } from "@mui/material";
+import { Box, Typography, Button, IconButton } from "@mui/material";
 import { LinkedIn, Facebook, Instagram } from "@mui/icons-material";
 import profileImg from "../../images/fiserv_professional.jpg";
 

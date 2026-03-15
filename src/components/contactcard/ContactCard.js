@@ -100,7 +100,7 @@ export default function ContactCard() {
         >
           <Box sx={{ p: 1, width: { xs: "90vw", sm: 450 } }}>
             <Typography variant="caption" sx={{ color: "var(--accent-emerald)", fontWeight: 900, mb: 2, display: "block" }}>
-              // ENCRYPTED TRANSMISSION
+              {"// ENCRYPTED TRANSMISSION"}
             </Typography>
             <ContactForm />
           </Box>
