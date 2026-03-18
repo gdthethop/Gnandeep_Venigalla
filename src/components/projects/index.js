@@ -78,7 +78,7 @@ const projectData = [
     subtitle: "Lead Architect | Media Ecosystem",
     description: "Engineering immersive media consumption. High-performance playback architectures optimized for distributed content delivery.",
     tech: ["Playback Engine", "Distributed UI"],
-    link: "https://gdthethop.github.io/Gdplayer/#/home",
+    link: "https://gdplayer.gnandeep.com",
     accent: "var(--accent-crimson)",
     status: "PHASE: PRODUCTION"
   },
@@ -89,7 +89,7 @@ const projectData = [
     subtitle: "Consolidated Parent Entity",
     description: "The strategic foundation for all modern ventures. Consolidating engineering excellence, creative vision, and scalable business logic.",
     tech: ["Architecture", "Strategy", "Execution"],
-    link: "#",
+    link: "https://gdenterprises.gnandeep.com",
     accent: "var(--accent-emerald)",
     status: "CORE: OPERATION"
   }
